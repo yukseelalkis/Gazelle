@@ -62,24 +62,22 @@ namespace Gazelle
 
         }
 
-
         private void button1_Click(object sender, EventArgs e){
      
-            if (textBox4.TextLength<10 || textBox2.TextLength <= 2 || textBox1.TextLength<=2 || (comboBox1.SelectedIndex-1)<0 || (comboBox2.SelectedIndex)<0)
+            if (textBox4.TextLength<10 || textBox2.TextLength <= 2 || textBox1.TextLength<=2 || (comboBox1.SelectedIndex+1)<0 || (comboBox2.SelectedIndex)<0)
             {
                 MessageBox.Show("Hatalı giriş yaptınız. Lütfen tekrar deneyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                string sorgu = "insert into tbl_Musteri values (@vergiNo,@ad,@soyad,@ilID,@ilceId,@acikAdres)";
-                database.ekleme(sorgu,textBox4, textBox1, textBox2, (comboBox1.SelectedIndex + 1), (comboBox2.SelectedItem.ToString()), richTextBox1);
+                string sorgu = "insert into tbl_Musteri values (@vergiNo,@ad,@soyad,@ilID,@ilceId,@acikAdres,@tel)";
+                database.ekleme(sorgu,textBox4, textBox1, textBox2, (comboBox1.SelectedIndex + 1), (comboBox2.SelectedItem.ToString()), richTextBox1,maskedTextBox1);
 
                 MessageBox.Show("Müşteri Eklendi.", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             label9.Text = comboBox2.SelectedItem.ToString();
 }
-
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
